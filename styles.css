@@ -4,7 +4,7 @@ body, html{
 body{
   margin: 0px;
   background-color:#444;
-  background-image: url('assets/danceFloor.png');
+  background-image: url('assets/background.gif');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -30,19 +30,28 @@ body, a:link, a:visited, a:active{
 }
 
 .hamster{
-  width: 100px;
   transform: rotate(50deg);
 }
 
-.jigglypuff{
+.jigglypuff, .pizza-cat, .hamster{
   width: 100px;
-  transform: rotate(40deg);
 }
 
 .bigger {
   transform: scale(1.5);
 }
 
+.pizza-cat {
+  transform: rotate(40deg);
+}
+
 .oscillate {
+/*  transform: rotateY(130deg);*/
   transform: rotate(-20deg);
+}
+
+
+
+.slide {
+  transform: translate(100px);
 }
