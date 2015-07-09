@@ -5,6 +5,7 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="styles.css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="lib/jquery.js"></script>
     <script src="src/dancer.js"></script>
     <script src="src/blinkyDancer.js"></script>
@@ -12,13 +13,33 @@
     <script src="src/jigglypuffDancer.js"></script>
   </head>
   <body>
-    <div class="topbar">
-      <span class="title">Object Dance Party</span>
+    <nav class="navbar navbar-default topbar">
+      <div class="navbar-header">
+        <div class="navbar-brand title">Object Dance Party</div>
+      </div>  
       <!-- <a href="#" class="addDancerButton" data-dancer-maker-function-name="makeBlinkyDancer">Add A Blinky Dancer</a>   -->
-      <a href="#" class="addDancerButton" data-dancer-maker-function-name="makeHamsterDancer">Add A Hamster Dancer</a> 
-      <a href="#" class="addDancerButton" data-dancer-maker-function-name="makeJigglypuffDancer">Add A Jigglypuff Dancer</a> 
-      <a href="#" class="lineUp">Line Up Dancers</a>
-    </div>
+      <div class="btn-group" role="group">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown<span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+          <li><a href="#" data-dancer-maker-function-name="makeHamsterDancer">Hamster Dancer</a></li>
+          <li><a href="#" data-dancer-maker-function-name="makeJigglepuffDancer">Jigglypuff Dancer</a></li>
+          <li><a href="#" class="lineUp">Line Up Dancers</a></li>
+        </ul>
+      </div>
+
+
+
+
+<!-- 
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#" class="addDancerButton" data-dancer-maker-function-name="makeHamsterDancer">Add A Hamster Dancer</a></li>
+        <li><a href="#" class="addDancerButton" data-dancer-maker-function-name="makeJigglypuffDancer">Add A Jigglypuff Dancer</a></li>
+        <li><a href="#" class="lineUp">Line Up Dancers</a></li>
+      </ul> -->
+    </nav>
     <script src="src/init.js"></script>
   </body>
 </html>
