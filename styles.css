@@ -15,14 +15,7 @@ body, a:link, a:visited, a:active{
   color: lightblue;
   text-decoration: none;  
 }
-.addDancerButton, .lineUp{
-  padding:5px 12px;
-  float: left;
-}
-.topbar{
-  height:32px;
-  background-color: #555;
-}
+
 .navbar-default .navbar-brand{
   color: #eee;
 }
