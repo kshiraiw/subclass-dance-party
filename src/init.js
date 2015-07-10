@@ -29,49 +29,79 @@ $(document).ready(function(){
     );
     window.dancers.push(dancer);
     $('body').append(dancer.$node);
-    // console.log(window.dancers[0].top + "initialization");
-    // console.log(window.dancers[0].left);
   });
 
   $('.lineUp').on('click', function(e){
     var numOfDancers = window.dancers.length;
-    var height = $("body").height() * .75;
+    var height = $("body").height() * .50;
     var widthSpacing = $("body").width() / (numOfDancers + 2);
 
     for(var i = 0; i < numOfDancers; i++){
       window.dancers[i].setPosition(height, widthSpacing * (i + 1));
     }
-    // console.log(window.dancers[0].top + "LINE UP");
-    // console.log(window.dancers[0].left);
+  });
+
+  $('.continue').on('click', function(e) {
+    for (var i = 0; i < window.dancers.length; i++) {
+      var randomTop = (Math.random() * $('body').height() - ($('body').height() * .25));
+      var randomLeft= Math.random() * $('body').width();
+      window.dancers[i].setPosition(randomTop, randomLeft);
+    }
+  });
+
+  $('.pairing').on('click', function(e){
+    var firstLine = window.dancers.slice(0, Math.ceil(window.dancers.length / 2));
+    var secondLine = window.dancers.slice(Math.ceil(window.dancers.length / 2), window.dancers.length);
+    var firstWidthSpacing = $("body").width() / (firstLine.length + 2);
+    var secondWidthSpacing = $("body").width() / (secondLine.length + 2);
+    var firstLineHeight = $("body").height() * 0.25;
+    var secondLineHeight = $("body").height() * 0.75;
+
+    for(var i = 0; i < firstLine.length; i++){
+      firstLine[i].setPosition(firstLineHeight, firstWidthSpacing * (i + 1));
+    }
+    for(var i = 0; i < secondLine.length; i++){
+      secondLine[i].setPosition(secondLineHeight, secondWidthSpacing * (i + 1));
+    }
   });
 
 
+  $('body').on('click', '.dancer', function(e) {
+    var top = parseInt(this.style.top);
+    var left = parseInt(this.style.left);
+    var object;
+    var closest;
+    var shortestHypo = 1000000;
+    var currentHypo;
 
 
-
- //  $('body').on('click', '.dancer', function(e) {
- //    var top = parseInt(this.style.top);
- //    var left = parseInt(this.style.left);
- //    var closest;
- //    var shortestHypo = 1000000;
- //    var currentHypo;
- //    for (var i = 0; i < window.dancers.length; i++) {
- //      currentHypo = Math.sqrt(Math.pow(top - window.dancers[i].top, 2) + Math.pow(left - window.dancers[i].left, 2));
- //      console.log(currentHypo)
- //      if(currentHypo < 5){
- //        continue;
- //      }
- //      if(currentHypo < shortestHypo){
+    for (var i = 0; i < window.dancers.length; i++) {
+      currentHypo = Math.sqrt(Math.pow(top - window.dancers[i].top, 2) + Math.pow(left - window.dancers[i].left, 2));
+      if(currentHypo < shortestHypo){
        
- //        shortestHypo = currentHypo;
- //        closest = window.dancers[i];
- //      }
- //    }
- //    this.style.top = closest.top + 'px';
- //    left = closest.left + 200;
- //    this.style.left = left + 'px';
- //    closest = undefined;
- // });
+        shortestHypo = currentHypo;
+        object = window.dancers[i];
+      }
+    }
+    console.log(object)    
+    shortestHypo = 1000000;
+    for (var i = 0; i < window.dancers.length; i++) {
+      currentHypo = Math.sqrt(Math.pow(object.top - window.dancers[i].top, 2) + Math.pow(object.left - window.dancers[i].left, 2));
+      console.log(currentHypo)
+      if(currentHypo < 5){
+        continue;
+      }
+      if(currentHypo < shortestHypo){
+       shortestHypo = currentHypo;
+        closest = window.dancers[i];
+      }
+    }
+
+    console.log(closest)
+
+    left = closest.left + (Math.random() * 200);
+    object.setPosition(closest.top, left);
+ });
 
 });
 

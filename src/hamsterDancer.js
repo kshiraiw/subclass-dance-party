@@ -10,6 +10,6 @@ makeHamsterDancer.prototype.constructor = makeHamsterDancer;
 
 makeHamsterDancer.prototype.step = function() {
   makeDancer.prototype.step.apply(this);
-  this.$node.toggleClass('bigger');
+  this.$node.toggleClass('oscillate');
   // this.$node.toggleClass('oscillate');
 };

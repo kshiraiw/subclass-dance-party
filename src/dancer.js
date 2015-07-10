@@ -3,6 +3,7 @@ var makeDancer = function(top, left, timeBetweenSteps){
   this.timeBetweenSteps = timeBetweenSteps;
   this.top = top;
   this.left = left;
+  this.time = 0;
 
   // use jQuery to create an HTML <span> tag
   this.$node = $('<span class="dot dancer"></span>');
@@ -35,4 +36,12 @@ makeDancer.prototype.sourceSwap = function(){
   var newSource = $this.data('alt-src');
   $this.data('alt-src', $this.attr('src'));
   $this.attr('src', newSource);
+};
+
+
+makeDancer.prototype.orbit = function(neighbor){
+  this.step();
+  this.left = Math.sin(this.left);
+  this.top = Math.sin(this.top);
+
 };
