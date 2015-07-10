@@ -59,7 +59,9 @@ body, a:link, a:visited, a:active{
   transform: rotate(-20deg);
 }
 
-
+audio {
+  margin-top: 10px;
+}
 
 .slide {
   transform: translate(100px);
